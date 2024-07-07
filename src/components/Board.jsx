@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Board = ({ boardTitle, posts }) => {
+  const navigate = useNavigate();
+
+  const handleBoardTitleClick = () => {
+    navigate(`/board/${boardTitle}`);
+  };
+
   return (
     <BoardContainer>
-      <BoardTitle>{boardTitle}</BoardTitle>
+      <BoardTitle onClick={handleBoardTitleClick}>{boardTitle}</BoardTitle>
       {posts.map((post, index) => (
         <Post key={index}>{post}</Post>
       ))}
