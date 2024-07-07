@@ -78,7 +78,11 @@ function Main() {
               <LogOutBtn>로그아웃</LogOutBtn>
             </Btn>
           </PersonInfo>
-          <PersonInfo2></PersonInfo2>
+          <PersonInfo2>
+            <MyLog>내가 쓴 글</MyLog>
+            <MyLog>댓글 단 글</MyLog>
+            <MyLog>내 스크랩</MyLog>
+          </PersonInfo2>
           <AdImg>
             <img src={Ad1} alt="광고1"></img>
           </AdImg>
@@ -223,6 +227,21 @@ const PersonInfo2 = styled.div`
   background-color: #f9f9f9;
   width: 100%;
   height: 130px;
+`;
+
+const MyLog = styled.div`
+  border-bottom: 0.9px solid #c2c1c1;
+  height: 43.2px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #292929;
+  padding-left: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+  }
 `;
 
 const AdImg = styled.div`
