@@ -1,10 +1,14 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
-    <div>
-      <h1>2024 Summer Web Camp</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
