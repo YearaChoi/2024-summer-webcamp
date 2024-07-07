@@ -22,7 +22,7 @@ function Header() {
         ></img>
       </Left>
       <Middle>
-        <Category>게시판</Category>
+        <Category onClick={handleLogoIconClick}>게시판</Category>
         <Category>시간표</Category>
         <Category>강의실</Category>
         <Category>학점계산기</Category>
