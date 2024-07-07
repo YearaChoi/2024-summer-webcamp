@@ -2,6 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import HotBoard from "./HotBoard";
 import Board from "./Board";
+import mainAd from "../assets/icons/mainAd.png";
+import Ad1 from "../assets/icons/Ad1.png";
+import Ad2 from "../assets/icons/Ad2.png";
+import Ad3 from "../assets/icons/Ad3.png";
 
 function Main() {
   const 자유게시판 = [
@@ -59,12 +63,20 @@ function Main() {
         <Left>
           <PersonInfo></PersonInfo>
           <PersonInfo2></PersonInfo2>
-          <AdImg></AdImg>
-          <AdImg></AdImg>
-          <AdImg></AdImg>
+          <AdImg>
+            <img src={Ad1} alt="광고1"></img>
+          </AdImg>
+          <AdImg>
+            <img src={Ad2} alt="광고2"></img>
+          </AdImg>
+          <AdImg>
+            <img src={Ad3} alt="광고3"></img>
+          </AdImg>
         </Left>
         <Middle>
-          <BigAdImg />
+          <BigAdImg>
+            <img src={mainAd} alt="메인 광고"></img>
+          </BigAdImg>
           <BoardWrapper>
             <Board boardTitle="자유게시판" posts={자유게시판} />
             <Board boardTitle="비밀게시판" posts={비밀게시판} />
@@ -124,6 +136,12 @@ const AdImg = styled.div`
   border: 0.9px solid #c2c1c1;
   width: 100%;
   height: 110px;
+
+  img {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Middle = styled.div`
@@ -136,6 +154,12 @@ const BigAdImg = styled.div`
   border: 0.9px solid #c2c1c1;
   width: 100%;
   height: 160px;
+
+  img {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 const BoardWrapper = styled.div`
