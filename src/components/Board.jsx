@@ -13,7 +13,9 @@ const Board = ({ boardTitle, posts }) => {
     <BoardContainer>
       <BoardTitle onClick={handleBoardTitleClick}>{boardTitle}</BoardTitle>
       {posts.map((post, index) => (
-        <Post key={index}>{post}</Post>
+        <Post onClick={handleBoardTitleClick} key={index}>
+          {post}
+        </Post>
       ))}
     </BoardContainer>
   );
