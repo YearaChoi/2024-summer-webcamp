@@ -9,6 +9,7 @@ export default BoardNameList;
 
 const Wrapper = styled.div`
   border-bottom: 0.9px solid #c2c1c1;
+  margin-top: 75px;
   height: 220px;
   background-color: #eeeeee;
 `;
