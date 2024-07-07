@@ -1,10 +1,18 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import Header from "../components/Header";
+import BoardNameList from "../components/BoardNameList";
+import Footer from "../components/Footer";
+import BoardMain from "../components/BoardMain";
 
 function BoardPage() {
-  const { boardTitle } = useParams();
-
-  return <div>{boardTitle}</div>;
+  return (
+    <div>
+      <Header />
+      <BoardNameList />
+      <BoardMain />
+      <Footer />
+    </div>
+  );
 }
 
 export default BoardPage;

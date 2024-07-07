@@ -66,7 +66,6 @@ function Main() {
         <Middle>
           <BigAdImg />
           <BoardWrapper>
-            {" "}
             <Board boardTitle="자유게시판" posts={자유게시판} />
             <Board boardTitle="비밀게시판" posts={비밀게시판} />
             <Board boardTitle="졸업생게시판" posts={졸업생게시판} />
