@@ -6,6 +6,7 @@ import mainAd from "../assets/icons/mainAd.png";
 import Ad1 from "../assets/icons/Ad1.png";
 import Ad2 from "../assets/icons/Ad2.png";
 import Ad3 from "../assets/icons/Ad3.png";
+import personImg from "../assets/icons/personImg.png";
 
 function Main() {
   const 자유게시판 = [
@@ -61,7 +62,22 @@ function Main() {
     <Wrapper>
       <Contents>
         <Left>
-          <PersonInfo></PersonInfo>
+          <PersonInfo>
+            <PersonImg>
+              <img src={personImg} alt="유저이미지"></img>
+            </PersonImg>
+            <Info>
+              <UserName>한동22</UserName>
+              <UserInfo>
+                <div>최예라</div>
+                <div>cyr22200750</div>
+              </UserInfo>
+            </Info>
+            <Btn>
+              <MyInfoBtn>내 정보</MyInfoBtn>
+              <LogOutBtn>로그아웃</LogOutBtn>
+            </Btn>
+          </PersonInfo>
           <PersonInfo2></PersonInfo2>
           <AdImg>
             <img src={Ad1} alt="광고1"></img>
@@ -120,8 +136,86 @@ const PersonInfo = styled.div`
   border: 0.9px solid #c2c1c1;
   background-color: #f9f9f9;
   width: 100%;
-  height: 200px;
+  height: 210px;
   margin-bottom: 10px;
+`;
+
+const PersonImg = styled.div`
+  margin-top: 25px;
+  /* border: 1px solid red; */
+  height: 60px;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 60px;
+    height: 100%;
+    border-radius: 10px;
+  }
+`;
+
+const Info = styled.div`
+  /* border: 1px solid red; */
+  height: 70px;
+  margin-top: 5px;
+`;
+
+const UserName = styled.div`
+  /* border: 1px solid red; */
+  margin-top: 10px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+`;
+const UserInfo = styled.div`
+  /* border: 1px solid red; */
+  height: 30px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #7e7e7e;
+  }
+`;
+
+const Btn = styled.div`
+  /* border: 1px solid red; */
+  margin-top: 5px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+`;
+
+const MyInfoBtn = styled.div`
+  border: 0.9px solid #c2c1c1;
+  border-radius: 3px;
+  width: 65px;
+  height: 25px;
+  margin-right: 5px;
+  font-size: 13px;
+  color: #606060;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const LogOutBtn = styled.div`
+  border: 0.9px solid #c2c1c1;
+  border-radius: 3px;
+  width: 65px;
+  height: 25px;
+  font-size: 13px;
+  color: #606060;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;
 
 const PersonInfo2 = styled.div`
