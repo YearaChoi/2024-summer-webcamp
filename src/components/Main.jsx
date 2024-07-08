@@ -7,6 +7,11 @@ import Ad1 from "../assets/icons/Ad1.png";
 import Ad2 from "../assets/icons/Ad2.png";
 import Ad3 from "../assets/icons/Ad3.png";
 import personImg from "../assets/icons/personImg.png";
+import Book from "./Book";
+import bookImg1 from "../assets/icons/bookImg1.png";
+import bookImg2 from "../assets/icons/bookImg2.png";
+import bookImg3 from "../assets/icons/bookImg3.png";
+import bookImg4 from "../assets/icons/bookImg4.png";
 
 function Main() {
   const 자유게시판 = [
@@ -107,7 +112,24 @@ function Main() {
             <Board boardTitle="홍보게시판" posts={홍보게시판} />
             <Board boardTitle="동아리학회" posts={동아리학회} />
           </BoardWrapper>
-          <Books></Books>
+          <Books>
+            <Book
+              image={bookImg1}
+              title="Contemporary Topics 1 with Essential Online"
+              price="17,000원"
+            />
+            <Book image={bookImg2} title="행정법 강해" price="50,000원" />
+            <Book
+              image={bookImg3}
+              title="14가지 테마로 즐기는 서양사"
+              price="18,000원"
+            />
+            <Book
+              image={bookImg4}
+              title="심리영성 발달의 이해"
+              price="15,000원"
+            />
+          </Books>
         </Middle>
         <HotBoard />
       </Contents>
@@ -284,7 +306,9 @@ const BoardWrapper = styled.div`
 `;
 
 const Books = styled.div`
-  border: 0.9px solid #c2c1c1;
+  /* border: 0.9px solid #c2c1c1; */
   width: 100%;
   height: 260px;
+  display: flex;
+  justify-content: space-between;
 `;
