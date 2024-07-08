@@ -249,6 +249,7 @@ const PersonInfo2 = styled.div`
   background-color: #f9f9f9;
   width: 100%;
   height: 130px;
+  border-bottom: none;
 `;
 
 const MyLog = styled.div`
