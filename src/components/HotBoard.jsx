@@ -78,7 +78,6 @@ function HotBoard() {
 export default HotBoard;
 
 const Wrapper = styled.div`
-  /* border: 1px solid red; */
   width: 330px;
   margin-left: auto;
 `;

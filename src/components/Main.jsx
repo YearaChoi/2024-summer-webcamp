@@ -144,7 +144,6 @@ const Wrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  /* border: 2px solid green; */
   display: flex;
   margin: auto;
   margin-top: 30px;
@@ -153,7 +152,6 @@ const Contents = styled.div`
 `;
 
 const Left = styled.div`
-  /* border: 1px solid red; */
   width: 170px;
   margin-right: 15px;
 `;
@@ -168,7 +166,6 @@ const PersonInfo = styled.div`
 
 const PersonImg = styled.div`
   margin-top: 25px;
-  /* border: 1px solid red; */
   height: 60px;
   display: flex;
   justify-content: center;
@@ -181,13 +178,11 @@ const PersonImg = styled.div`
 `;
 
 const Info = styled.div`
-  /* border: 1px solid red; */
   height: 70px;
   margin-top: 5px;
 `;
 
 const UserName = styled.div`
-  /* border: 1px solid red; */
   margin-top: 10px;
   height: 30px;
   display: flex;
@@ -197,7 +192,6 @@ const UserName = styled.div`
   font-weight: 700;
 `;
 const UserInfo = styled.div`
-  /* border: 1px solid red; */
   height: 30px;
 
   div {
@@ -210,7 +204,6 @@ const UserInfo = styled.div`
 `;
 
 const Btn = styled.div`
-  /* border: 1px solid red; */
   margin-top: 5px;
   height: 30px;
   display: flex;
@@ -281,7 +274,6 @@ const AdImg = styled.div`
 `;
 
 const Middle = styled.div`
-  /* border: 1px solid red; */
   width: 600px;
   margin-right: 15px;
 `;
@@ -299,7 +291,6 @@ const BigAdImg = styled.div`
 `;
 
 const BoardWrapper = styled.div`
-  /* border: 1px solid blue; */
   margin-top: 15px;
   height: 115vh;
   display: flex;
@@ -307,7 +298,6 @@ const BoardWrapper = styled.div`
 `;
 
 const Books = styled.div`
-  /* border: 0.9px solid #c2c1c1; */
   width: 100%;
   height: 260px;
   display: flex;

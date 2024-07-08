@@ -90,7 +90,6 @@ const Wrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  /* border: 2px solid green; */
   display: flex;
   margin: auto;
   margin-top: 30px;
@@ -99,7 +98,6 @@ const Contents = styled.div`
 `;
 
 const Left = styled.div`
-  /* border: 1px solid red; */
   width: 70%;
   margin-right: 25px;
 `;

@@ -54,7 +54,6 @@ const Wrapper = styled.div`
 `;
 
 const Left = styled.div`
-  /* border: 1px solid red; */
   width: 300px;
   img {
     cursor: pointer;
@@ -65,7 +64,6 @@ const Left = styled.div`
 `;
 
 const Middle = styled.div`
-  /* border: 1px solid red; */
   width: 600px;
   display: flex;
   justify-content: center;
@@ -73,7 +71,6 @@ const Middle = styled.div`
 `;
 
 const Category = styled.div`
-  /* border: 2px solid green; */
   cursor: pointer;
   width: 75px;
   font-size: 17px;
@@ -87,7 +84,6 @@ const Category = styled.div`
   }
 `;
 const Right = styled.div`
-  /* border: 1px solid red; */
   width: 300px;
   display: flex;
   align-items: center;
