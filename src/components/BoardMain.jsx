@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import HotBoard from "./HotBoard";
+import penIcon from "../assets/icons/pencil.png";
+import fireIcon from "../assets/icons/hot.png";
 
 function BoardMain() {
   const { boardTitle } = useParams();
@@ -62,9 +64,13 @@ function BoardMain() {
         <Left>
           <BoardTitle>{boardTitle}</BoardTitle>
           <Hot>
-            <Topic>교수님이 성적 정정해주신다고</Topic>
+            {" "}
+            <img src={fireIcon} alt="불 아이콘"></img>
+            <Topic>함께 지어져가는 존재인 '우리'</Topic>
           </Hot>
-          <UploadNewPost></UploadNewPost>
+          <UploadNewPost>
+            새 글을 작성해주세요! <img src={penIcon} alt="메세지 아이콘"></img>
+          </UploadNewPost>
           {dummyData.map((post, index) => (
             <Post key={index}>
               <PostTitle>{post.title}</PostTitle>
@@ -73,7 +79,6 @@ function BoardMain() {
             </Post>
           ))}
           <LeftBottom>
-            <SearchBar></SearchBar>
             <NextPageBtn>다음</NextPageBtn>
           </LeftBottom>
         </Left>
@@ -119,11 +124,16 @@ const Hot = styled.div`
   margin-bottom: 8px;
   display: flex;
   align-items: center;
+
+  img {
+    margin-left: 10px;
+    height: 30px;
+  }
 `;
 
 const Topic = styled.div`
   height: 45px;
-  width: 190px;
+  width: 160px;
   border-radius: 15px;
   background-color: #ffebeb;
   margin-left: 10px;
@@ -139,7 +149,21 @@ const UploadNewPost = styled.div`
   height: 55px;
   border: 2px solid #cccccc;
   margin-bottom: 8px;
-  background-color: #f9f9f9;
+  background-color: #f0f0f0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+  font-size: 14px;
+  color: #a09f9f;
+  cursor: pointer;
+
+  img {
+    height: 20px;
+    margin-right: 20px;
+    filter: opacity(0.5) drop-shadow(0 0 0 #d1d1d1);
+  }
 `;
 
 const Post = styled.div`
@@ -170,16 +194,9 @@ const PostInfo = styled.div`
 `;
 
 const LeftBottom = styled.div`
-  display: flex;
   margin-top: 8px;
-  justify-content: space-between;
-`;
-
-const SearchBar = styled.div`
-  height: 40px;
-  width: 230px;
-  border: 1.3px solid #aeaeae;
-  border-radius: 2px;
+  display: flex;
+  justify-content: right;
 `;
 
 const NextPageBtn = styled.div`
@@ -189,7 +206,7 @@ const NextPageBtn = styled.div`
   color: #f92626;
   font-weight: 600;
   height: 40px;
-  width: 55px;
+  width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
