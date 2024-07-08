@@ -292,14 +292,15 @@ const BigAdImg = styled.div`
 
 const BoardWrapper = styled.div`
   margin-top: 15px;
-  height: 115vh;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 `;
 
 const Books = styled.div`
   width: 100%;
   height: 260px;
   display: flex;
+  margin-top: 20px;
   justify-content: space-between;
 `;
