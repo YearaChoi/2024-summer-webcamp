@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import penIcon from "../assets/icons/pencil.png";
 
 const rules = `에브리타임은 누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 제정하여 운영하고 있습니다. 위반 시 게시물이 삭제되고 서비스 이용이 일정 기간 제한될 수 있습니다. 
 
@@ -57,7 +58,9 @@ function UploadPost() {
           onChange={handleAnonymousChange}
         />
         <CheckboxLabel>익명</CheckboxLabel>
-        <EditBtn>편집</EditBtn>
+        <EditBtn>
+          <img src={penIcon} alt="펜 아이콘"></img>
+        </EditBtn>
       </CheckboxWrapper>
     </Wrapper>
   );
@@ -114,7 +117,13 @@ const CheckboxLabel = styled.label`
 const EditBtn = styled.div`
   background-color: #f44336;
   color: white;
-  padding: 10px 10px;
+  padding: 10px 12px;
   border: none;
   cursor: pointer;
+  height: 20px;
+
+  img {
+    height: 18px;
+    filter: invert();
+  }
 `;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import HotBoard from "./HotBoard";
@@ -8,6 +8,11 @@ import UploadPost from "./UploadPost";
 
 function BoardMain() {
   const { boardTitle } = useParams();
+  const [showUploadPost, setShowUploadPost] = useState(false);
+
+  const handleClickUpload = () => {
+    setShowUploadPost(true);
+  };
 
   const dummyData = [
     {
@@ -69,10 +74,12 @@ function BoardMain() {
             <img src={fireIcon} alt="불 아이콘"></img>
             <Topic>함께 지어져가는 존재인 '우리'</Topic>
           </Hot>
-          <UploadNewPost>
-            새 글을 작성해주세요! <img src={penIcon} alt="메세지 아이콘"></img>
-          </UploadNewPost>
-          <UploadPost />
+          {!showUploadPost && (
+            <UploadNewPost onClick={handleClickUpload}>
+              새 글을 작성해주세요! <img src={penIcon} alt="펜 아이콘"></img>
+            </UploadNewPost>
+          )}
+          {showUploadPost && <UploadPost />}
           {dummyData.map((post, index) => (
             <Post key={index}>
               <PostTitle>{post.title}</PostTitle>
