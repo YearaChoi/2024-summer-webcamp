@@ -39,13 +39,17 @@ function WeatherOpenAPI() {
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <Wrapper>
+        <PreMessage>{error}</PreMessage>
+      </Wrapper>
+    );
   }
 
   if (!weatherData) {
     return (
       <Wrapper>
-        <Loding>날씨 불러오는 중...</Loding>
+        <PreMessage>날씨 불러오는 중...</PreMessage>
       </Wrapper>
     );
   }
@@ -74,7 +78,7 @@ const Wrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-const Loding = styled.div`
+const PreMessage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
