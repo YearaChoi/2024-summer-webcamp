@@ -100,7 +100,7 @@ function BoardMain() {
 export default BoardMain;
 
 const Wrapper = styled.div`
-  height: 180vh;
+  margin-bottom: 50px;
 `;
 
 const Contents = styled.div`
