@@ -12,6 +12,7 @@ import bookImg1 from "../assets/icons/bookImg1.png";
 import bookImg2 from "../assets/icons/bookImg2.png";
 import bookImg3 from "../assets/icons/bookImg3.png";
 import bookImg4 from "../assets/icons/bookImg4.png";
+import WeatherOpenAPI from "./WeatherOpenAPI";
 
 function Main() {
   const 자유게시판 = [
@@ -83,6 +84,7 @@ function Main() {
               <LogOutBtn>로그아웃</LogOutBtn>
             </Btn>
           </PersonInfo>
+          <WeatherOpenAPI />
           <PersonInfo2>
             <MyLog>내가 쓴 글</MyLog>
             <MyLog>댓글 단 글</MyLog>
