@@ -4,6 +4,7 @@ import styled from "styled-components";
 import HotBoard from "./HotBoard";
 import penIcon from "../assets/icons/pencil.png";
 import fireIcon from "../assets/icons/hot.png";
+import UploadPost from "./UploadPost";
 
 function BoardMain() {
   const { boardTitle } = useParams();
@@ -71,6 +72,7 @@ function BoardMain() {
           <UploadNewPost>
             새 글을 작성해주세요! <img src={penIcon} alt="메세지 아이콘"></img>
           </UploadNewPost>
+          <UploadPost />
           {dummyData.map((post, index) => (
             <Post key={index}>
               <PostTitle>{post.title}</PostTitle>
