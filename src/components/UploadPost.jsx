@@ -65,9 +65,9 @@ function UploadPost({ onAddPost }) {
           onChange={handleAnonymousChange}
         />
         <CheckboxLabel>익명</CheckboxLabel>
-        <EditBtn onClick={handleSubmit}>
+        <UploadBtn onClick={handleSubmit}>
           <img src={penIcon} alt="펜 아이콘"></img>
-        </EditBtn>
+        </UploadBtn>
       </CheckboxWrapper>
     </Wrapper>
   );
@@ -102,6 +102,7 @@ const TextArea = styled.textarea`
   padding: 18px;
   font-size: 13px;
   border: none;
+  resize: none;
 
   &:focus {
     outline: none;
@@ -121,7 +122,7 @@ const CheckboxLabel = styled.label`
   font-size: 13px;
 `;
 
-const EditBtn = styled.div`
+const UploadBtn = styled.div`
   background-color: #f44336;
   color: white;
   padding: 10px 12px;
