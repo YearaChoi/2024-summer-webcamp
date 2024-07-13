@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HotBoard from "./HotBoard";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import penIcon from "../assets/icons/pencil.png";
 import personImg from "../assets/icons/personImg.png";
 import thumbsBtn from "../assets/icons/thumbsUp.png";
@@ -12,9 +12,14 @@ function PostDetailMain() {
   const { boardTitle } = useParams();
   const [comment, setComment] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const navigate = useNavigate();
 
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
   const handleCommentChange = (e) => setComment(e.target.value);
+
+  const handleReturnPostList = () => {
+    navigate(-1);
+  };
 
   return (
     <Wrapper>
@@ -70,6 +75,9 @@ function PostDetailMain() {
               <img src={penIcon} alt="펜 아이콘"></img>
             </UploadBtn>
           </UploadComment>
+          <ReturnPostListBtn onClick={handleReturnPostList}>
+            글 목록
+          </ReturnPostListBtn>
         </Left>
         <HotBoard />
       </Contents>
@@ -255,4 +263,19 @@ const UploadBtn = styled.div`
     height: 18px;
     filter: invert();
   }
+`;
+
+const ReturnPostListBtn = styled.div`
+  cursor: pointer;
+  border: 1.3px solid #f92626;
+  margin-top: 10px;
+  border-radius: 2px;
+  color: #f92626;
+  font-weight: 600;
+  font-size: 15px;
+  height: 35px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
