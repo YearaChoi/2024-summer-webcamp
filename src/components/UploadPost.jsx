@@ -38,6 +38,16 @@ function UploadPost({ onAddPost }) {
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
 
   const handleSubmit = () => {
+    if (!title.trim()) {
+      alert("제목을 입력해 주세요");
+      return;
+    }
+
+    if (!content.trim()) {
+      alert("내용을 입력해 주세요");
+      return;
+    }
+
     onAddPost(title, content, isAnonymous);
     setTitle("");
     setContent("");
