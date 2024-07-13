@@ -14,7 +14,7 @@ function BoardMain() {
     setShowUploadPost(true);
   };
 
-  const dummyData = [
+  const [posts, setPosts] = useState([
     {
       title: "성적 정정",
       content: "교수님이 성적 정정해주신다고 했는데..",
@@ -62,7 +62,17 @@ function BoardMain() {
       content: "우리학교 하늘 진짜 예쁜 것 같아요",
       info: "0707 | 익명",
     },
-  ];
+  ]);
+
+  const handleAddPost = (title, content, isAnonymous) => {
+    const newPost = {
+      title,
+      content,
+      info: "방금 | " + (isAnonymous ? "익명" : "사용자"),
+    };
+    setPosts([newPost, ...posts]);
+    setShowUploadPost(false);
+  };
 
   return (
     <Wrapper>
@@ -79,11 +89,15 @@ function BoardMain() {
               새 글을 작성해주세요! <img src={penIcon} alt="펜 아이콘"></img>
             </UploadNewPost>
           )}
-          {showUploadPost && <UploadPost />}
-          {dummyData.map((post, index) => (
+          {showUploadPost && <UploadPost onAddPost={handleAddPost} />}
+          {posts.map((post, index) => (
             <Post key={index}>
               <PostTitle>{post.title}</PostTitle>
-              <PostContent>{post.content}</PostContent>
+              <PostContent>
+                {post.content.length > 50
+                  ? `${post.content.slice(0, 50)}...`
+                  : post.content}
+              </PostContent>
               <PostInfo>{post.info}</PostInfo>
             </Post>
           ))}

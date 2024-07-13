@@ -28,7 +28,7 @@ const rules = `에브리타임은 누구나 기분 좋게 참여할 수 있는 �
 - 음란물, 성적 수치심을 유발하는 행위 
 - 스포일러, 공포, 속임, 놀라게 하는 행위`;
 
-function UploadPost() {
+function UploadPost({ onAddPost }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
@@ -36,6 +36,13 @@ function UploadPost() {
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
+
+  const handleSubmit = () => {
+    onAddPost(title, content, isAnonymous);
+    setTitle("");
+    setContent("");
+    setIsAnonymous(true);
+  };
 
   return (
     <Wrapper>
@@ -58,7 +65,7 @@ function UploadPost() {
           onChange={handleAnonymousChange}
         />
         <CheckboxLabel>익명</CheckboxLabel>
-        <EditBtn>
+        <EditBtn onClick={handleSubmit}>
           <img src={penIcon} alt="펜 아이콘"></img>
         </EditBtn>
       </CheckboxWrapper>
