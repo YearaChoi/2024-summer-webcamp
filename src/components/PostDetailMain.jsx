@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HotBoard from "./HotBoard";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,12 +8,14 @@ import thumbsBtn from "../assets/icons/thumbsUp.png";
 import scrapBtn from "../assets/icons/scrap.png";
 import defaultUI from "../assets/icons/DefaultUI.png";
 import ModifyPostUI from "./ModifyPostUI";
+import postData from "./postData";
 
 function PostDetailMain() {
-  const { boardTitle } = useParams();
+  const { boardTitle, postId } = useParams();
   const [comment, setComment] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const [post, setPost] = useState(null);
   const navigate = useNavigate();
 
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
@@ -30,6 +32,19 @@ function PostDetailMain() {
   const handleReturnPostList = () => {
     navigate(-1);
   };
+
+  useEffect(() => {
+    // postId에 해당하는 게시글 데이터 찾기
+    const foundPost = postData.find((post) => post.id === parseInt(postId));
+    setPost(foundPost);
+  }, [postId]);
+
+  console.log("postId : ", postId);
+  console.log("post : ", post);
+
+  if (!post) {
+    return <div>게시글을 찾을 수 없습니다.</div>;
+  }
 
   return (
     <Wrapper>
@@ -48,7 +63,7 @@ function PostDetailMain() {
                     </UserDefaultImg>
                     <InfoContainer>
                       <UserName>익명</UserName>
-                      <UploadTime>07/13 22:02</UploadTime>
+                      <UploadTime>07/14 22:02</UploadTime>
                     </InfoContainer>
                   </PostInfo>
                   <AboutPost>
@@ -57,14 +72,8 @@ function PostDetailMain() {
                   </AboutPost>
                 </Top>
                 <Middle>
-                  <PostTitle>
-                    우리학교에서 전자공학 전공하는거 어때요?
-                  </PostTitle>
-                  <PostContent>
-                    우리학교가 SW 컴공 중심대학이라 전자공학은 확실히 컴공에
-                    비해 학교 차원에사 지원이 부족한것 같아서 물어봅니다!
-                    그래서인지 전자공학과 전공하는 선배님들도 적은것 같구요 ㅠㅠ
-                  </PostContent>
+                  <PostTitle>{post.title}</PostTitle>
+                  <PostContent>{post.content}</PostContent>
                 </Middle>
                 <Bottom>
                   <Count>

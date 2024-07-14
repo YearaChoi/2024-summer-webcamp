@@ -46,6 +46,7 @@ function BoardMain() {
           {showUploadPost && <UploadPost onAddPost={handleAddPost} />}
           {posts.map((post, index) => (
             <Link
+              key={post.id}
               style={{ textDecoration: "none", color: "black" }}
               to={`/board/${boardTitle}/post/${post.id}`}
             >
