@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import penIcon from "../assets/icons/pencil.png";
 
-function ModifyPostUI({ onAddPost }) {
+function ModifyPostUI({ onAddPost, handleCancelEdit }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
@@ -28,10 +28,6 @@ function ModifyPostUI({ onAddPost }) {
     setIsAnonymous(true);
   };
 
-  const handleCancelPost = () => {
-    window.location.reload();
-  };
-
   return (
     <Wrapper>
       <PostTitle type="text" value={title} onChange={handleTitleChange} />
@@ -48,7 +44,7 @@ function ModifyPostUI({ onAddPost }) {
           <img src={penIcon} alt="펜 아이콘"></img>
         </UploadBtn>
       </CheckboxWrapper>
-      <CancelPostBtn onClick={handleCancelPost}>글 수정 취소</CancelPostBtn>
+      <CancelPostBtn onClick={handleCancelEdit}>글 수정 취소</CancelPostBtn>
     </Wrapper>
   );
 }

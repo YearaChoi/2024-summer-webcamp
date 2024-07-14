@@ -7,15 +7,25 @@ import personImg from "../assets/icons/personImg.png";
 import thumbsBtn from "../assets/icons/thumbsUp.png";
 import scrapBtn from "../assets/icons/scrap.png";
 import defaultUI from "../assets/icons/DefaultUI.png";
+import ModifyPostUI from "./ModifyPostUI";
 
 function PostDetailMain() {
   const { boardTitle } = useParams();
   const [comment, setComment] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
   const navigate = useNavigate();
 
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
   const handleCommentChange = (e) => setComment(e.target.value);
+  const handleEditPost = () => setIsEditing(true);
+  const handleCancelEdit = () => setIsEditing(false);
+
+  const handleDeletePost = () => {
+    if (window.confirm("이 글을 삭제하시겠습니까?")) {
+      navigate(-1);
+    }
+  };
 
   const handleReturnPostList = () => {
     navigate(-1);
@@ -26,62 +36,70 @@ function PostDetailMain() {
       <Contents>
         <Left>
           <BoardTitle>{boardTitle}</BoardTitle>
-          <Post>
-            <Top>
-              <PostInfo>
-                <UserDefaultImg>
-                  <img src={personImg} alt="유저이미지"></img>
-                </UserDefaultImg>
-                <InfoContainer>
-                  <UserName>익명</UserName>
-                  <UploadTime>07/13 22:02</UploadTime>
-                </InfoContainer>
-              </PostInfo>
-              <AboutPost>
-                <ModifyPost>수정</ModifyPost>
-                <DeletePost>삭제</DeletePost>
-              </AboutPost>
-            </Top>
-            <Middle>
-              <PostTitle>우리학교에서 전자공학 전공하는거 어때요?</PostTitle>
-              <PostContent>
-                우리학교가 SW 컴공 중심대학이라 전자공학은 확실히 컴공에 비해
-                학교 차원에사 지원이 부족한것 같아서 물어봅니다! 그래서인지
-                전자공학과 전공하는 선배님들도 적은것 같구요 ㅠㅠ
-              </PostContent>
-            </Middle>
-            <Bottom>
-              <Count>
-                {" "}
-                <img src={defaultUI} alt="기본UI이미지"></img>
-              </Count>
-              <PostBtn>
-                <img src={thumbsBtn} alt="좋아요"></img>
-                <img src={scrapBtn} alt="스크랩"></img>
-              </PostBtn>
-            </Bottom>
-          </Post>
-          <UploadComment>
-            <Comment
-              placeholder="댓글을 입력하세요"
-              value={comment}
-              onChange={handleCommentChange}
-            />
-            <CheckboxWrapper>
-              <input
-                type="checkbox"
-                checked={isAnonymous}
-                onChange={handleAnonymousChange}
-              />
-              <CheckboxLabel>익명</CheckboxLabel>
-            </CheckboxWrapper>
-            <UploadBtn>
-              <img src={penIcon} alt="펜 아이콘"></img>
-            </UploadBtn>
-          </UploadComment>
-          <ReturnPostListBtn onClick={handleReturnPostList}>
-            글 목록
-          </ReturnPostListBtn>
+          {isEditing ? (
+            <ModifyPostUI handleCancelEdit={handleCancelEdit} />
+          ) : (
+            <>
+              <Post>
+                <Top>
+                  <PostInfo>
+                    <UserDefaultImg>
+                      <img src={personImg} alt="유저이미지"></img>
+                    </UserDefaultImg>
+                    <InfoContainer>
+                      <UserName>익명</UserName>
+                      <UploadTime>07/13 22:02</UploadTime>
+                    </InfoContainer>
+                  </PostInfo>
+                  <AboutPost>
+                    <ModifyPost onClick={handleEditPost}>수정</ModifyPost>
+                    <DeletePost onClick={handleDeletePost}>삭제</DeletePost>
+                  </AboutPost>
+                </Top>
+                <Middle>
+                  <PostTitle>
+                    우리학교에서 전자공학 전공하는거 어때요?
+                  </PostTitle>
+                  <PostContent>
+                    우리학교가 SW 컴공 중심대학이라 전자공학은 확실히 컴공에
+                    비해 학교 차원에사 지원이 부족한것 같아서 물어봅니다!
+                    그래서인지 전자공학과 전공하는 선배님들도 적은것 같구요 ㅠㅠ
+                  </PostContent>
+                </Middle>
+                <Bottom>
+                  <Count>
+                    {" "}
+                    <img src={defaultUI} alt="기본UI이미지"></img>
+                  </Count>
+                  <PostBtn>
+                    <img src={thumbsBtn} alt="좋아요"></img>
+                    <img src={scrapBtn} alt="스크랩"></img>
+                  </PostBtn>
+                </Bottom>
+              </Post>
+              <UploadComment>
+                <Comment
+                  placeholder="댓글을 입력하세요"
+                  value={comment}
+                  onChange={handleCommentChange}
+                />
+                <CheckboxWrapper>
+                  <input
+                    type="checkbox"
+                    checked={isAnonymous}
+                    onChange={handleAnonymousChange}
+                  />
+                  <CheckboxLabel>익명</CheckboxLabel>
+                </CheckboxWrapper>
+                <UploadBtn>
+                  <img src={penIcon} alt="펜 아이콘"></img>
+                </UploadBtn>
+              </UploadComment>
+              <ReturnPostListBtn onClick={handleReturnPostList}>
+                글 목록
+              </ReturnPostListBtn>
+            </>
+          )}
         </Left>
         <HotBoard />
       </Contents>
