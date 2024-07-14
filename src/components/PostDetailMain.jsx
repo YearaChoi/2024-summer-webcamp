@@ -52,7 +52,11 @@ function PostDetailMain() {
         <Left>
           <BoardTitle>{boardTitle}</BoardTitle>
           {isEditing ? (
-            <ModifyPostUI handleCancelEdit={handleCancelEdit} />
+            <ModifyPostUI
+              initialTitle={post.title}
+              initialContent={post.content}
+              handleCancelEdit={handleCancelEdit}
+            />
           ) : (
             <>
               <Post>

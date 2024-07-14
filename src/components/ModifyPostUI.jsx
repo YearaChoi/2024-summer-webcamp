@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import penIcon from "../assets/icons/pencil.png";
+import { useNavigate } from "react-router-dom";
 
-function ModifyPostUI({ onAddPost, handleCancelEdit }) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+function ModifyPostUI({ initialTitle, initialContent, handleCancelEdit }) {
+  const [title, setTitle] = useState(initialTitle);
+  const [content, setContent] = useState(initialContent);
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const navigate = useNavigate();
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
@@ -22,16 +24,16 @@ function ModifyPostUI({ onAddPost, handleCancelEdit }) {
       return;
     }
 
-    onAddPost(title, content, isAnonymous);
     setTitle("");
     setContent("");
     setIsAnonymous(true);
+
+    navigate(-1);
   };
 
   return (
     <Wrapper>
       <PostTitle type="text" value={title} onChange={handleTitleChange} />
-
       <TextArea value={content} onChange={handleContentChange} />
       <CheckboxWrapper>
         <input
