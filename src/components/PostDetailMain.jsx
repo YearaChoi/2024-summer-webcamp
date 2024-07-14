@@ -43,8 +43,12 @@ function PostDetailMain() {
               </AboutPost>
             </Top>
             <Middle>
-              <PostTitle>안녕하세요</PostTitle>
-              <PostContent>일단 UI 확인용</PostContent>
+              <PostTitle>우리학교에서 전자공학 전공하는거 어때요?</PostTitle>
+              <PostContent>
+                우리학교가 SW 컴공 중심대학이라 전자공학은 확실히 컴공에 비해
+                학교 차원에사 지원이 부족한것 같아서 물어봅니다! 그래서인지
+                전자공학과 전공하는 선배님들도 적은것 같구요 ㅠㅠ
+              </PostContent>
             </Middle>
             <Bottom>
               <Count>
@@ -183,7 +187,7 @@ const PostTitle = styled.div`
 const PostContent = styled.div`
   font-size: 15px;
   margin-bottom: 20px;
-  /* border: 1px solid green; */
+  margin-right: 20px;
 `;
 
 const Bottom = styled.div`
