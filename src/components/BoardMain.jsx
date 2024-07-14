@@ -5,6 +5,7 @@ import HotBoard from "./HotBoard";
 import penIcon from "../assets/icons/pencil.png";
 import fireIcon from "../assets/icons/hot.png";
 import UploadPost from "./UploadPost";
+import postsData from "./postData";
 
 function BoardMain() {
   const { boardTitle } = useParams();
@@ -14,64 +15,7 @@ function BoardMain() {
     setShowUploadPost(true);
   };
 
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "성적 정정",
-      content: "교수님이 성적 정정해주신다고 했는데..",
-      info: "방금 | 익명",
-    },
-    {
-      id: 2,
-      title: "grade >> pf",
-      content:
-        "grade였는데 pf로 바꿨던 강의면 학점 계산할때 p로 들어가는건가요 a+로 들어가는건가요?",
-      info: "5분 전 | 익명",
-    },
-    {
-      id: 3,
-      title: "캠퍼스 편의점 장사 미쳤네요",
-      content: "기말고사 한 주일 앞둔 시점에 빈소스 발견했어요.",
-      info: "17분 전 | 익명",
-    },
-    {
-      id: 4,
-      title: "전공 동아리",
-      content: "컴퓨터공학과 전공 동아리 추천해주세요!",
-      info: "38분 전 | 익명",
-    },
-    {
-      id: 5,
-      title: "코딩공부 어떻게 하고 계신가요?",
-      content: "자료구조부터 시작해서 어떻게 공부하셨나요?",
-      info: "58분 전 | 익명",
-    },
-    {
-      id: 6,
-      title: "인공지능 캡스톤 디자인",
-      content: "AI 관련 프로젝트 했던 분들 의견 좀 들려주세요!",
-      info: "0707 | 익명",
-    },
-    {
-      id: 7,
-      title: "제이쿼리 혼자 공부하면 될까요?",
-      content:
-        "웹 개발을 시작한지 얼마 안 됐는데 제이쿼리는 어떻게 시작해야 할까요?",
-      info: "0707 | 익명",
-    },
-    {
-      id: 8,
-      title: "대학 생활 추억",
-      content: "대학에서 제일 재밌었던 추억을 공유해주세요!",
-      info: "0707 | 익명",
-    },
-    {
-      id: 9,
-      title: "한동이 제일 조아",
-      content: "우리학교 하늘 진짜 예쁜 것 같아요",
-      info: "0707 | 익명",
-    },
-  ]);
+  const [posts, setPosts] = useState(postsData);
 
   const handleAddPost = (title, content, isAnonymous) => {
     const newPost = {
