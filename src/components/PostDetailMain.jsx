@@ -9,6 +9,7 @@ import scrapBtn from "../assets/icons/scrap.png";
 import defaultUI from "../assets/icons/DefaultUI.png";
 import ModifyPostUI from "./ModifyPostUI";
 import getPost from "../apis/getPost";
+import deletePost from "../apis/deletePost";
 
 function PostDetailMain() {
   const { boardTitle, postId } = useParams();
@@ -23,9 +24,15 @@ function PostDetailMain() {
   const handleEditPost = () => setIsEditing(true);
   const handleCancelEdit = () => setIsEditing(false);
 
-  const handleDeletePost = () => {
+  const handleDeletePost = async () => {
     if (window.confirm("이 글을 삭제하시겠습니까?")) {
-      navigate(-1);
+      try {
+        const id = postId;
+        await deletePost(id);
+        navigate(-1);
+      } catch (error) {
+        console.error("Failed to delete post:", error);
+      }
     }
   };
 
