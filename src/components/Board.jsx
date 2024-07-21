@@ -19,7 +19,11 @@ const Board = ({ boardTitle }) => {
   useEffect(() => {
     const fetchPostList = async () => {
       const fetchedPostList = await getBoardPost(boardname);
-      setPosts(fetchedPostList.slice(0, 4));
+
+      const sortedPosts = fetchedPostList.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      setPosts(sortedPosts.slice(0, 4));
     };
     fetchPostList();
   }, [boardname]);

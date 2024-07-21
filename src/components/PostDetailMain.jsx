@@ -41,7 +41,7 @@ function PostDetailMain() {
   };
 
   const handleBoardTitleClick = () => {
-    navigate(-1);
+    navigate(`/board/${boardTitle}`);
   };
 
   useEffect(() => {
