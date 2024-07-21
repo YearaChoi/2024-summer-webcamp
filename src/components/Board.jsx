@@ -80,6 +80,10 @@ const Post = styled.div`
   align-items: center;
   border-bottom: 0.9px solid #c2c1c1;
   cursor: pointer;
+
+  &:hover {
+    background-color: #f9f9f9;
+  }
 `;
 
 const PostTitle = styled.div`
@@ -88,10 +92,6 @@ const PostTitle = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
-
-  &:hover {
-    background-color: #f9f9f9;
-  }
 `;
 
 const CreatedDate = styled.div`
