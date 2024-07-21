@@ -30,7 +30,7 @@ const rules = `에브리타임은 누구나 기분 좋게 참여할 수 있는 �
 - 음란물, 성적 수치심을 유발하는 행위 
 - 스포일러, 공포, 속임, 놀라게 하는 행위`;
 
-function UploadPost({ onAddPost }) {
+function UploadPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);

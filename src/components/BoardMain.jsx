@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import HotBoard from "./HotBoard";
 import penIcon from "../assets/icons/pencil.png";
 import fireIcon from "../assets/icons/hot.png";
 import UploadPost from "./UploadPost";
-import postsData from "./postData";
+import getBoard from "../apis/getBoardPost";
+// import postsData from "./postData";
 
 function BoardMain() {
   const { boardTitle } = useParams();
@@ -15,18 +16,41 @@ function BoardMain() {
     setShowUploadPost(true);
   };
 
-  const [posts, setPosts] = useState(postsData);
+  // const [posts, setPosts] = useState(postsData);
+  const [posts, setPosts] = useState("");
 
-  const handleAddPost = (title, content, isAnonymous) => {
-    const newPost = {
-      id: posts.length + 1,
-      title,
-      content,
-      info: "방금 | " + (isAnonymous ? "익명" : "사용자"),
+  // const handleAddPost = (title, content, isAnonymous) => {
+  //   const newPost = {
+  //     id: posts.length + 1,
+  //     title,
+  //     content,
+  //     info: "방금 | " + (isAnonymous ? "익명" : "사용자"),
+  //   };
+  //   setPosts([newPost, ...posts]);
+  //   setShowUploadPost(false);
+  // };
+
+  // const handleAddPost = async () => {
+  //   try {
+  //     const boardname = boardTitle;
+  //     await getBoard(boardname);
+  //   } catch (error) {
+  //     console.error("Failed to get post:", error);
+  //   }
+  // };
+
+  const boardname = boardTitle;
+
+  useEffect(() => {
+    const fetchPostList = async () => {
+      const fetchedPostList = await getBoard(boardname);
+      setPosts(fetchedPostList);
+      setShowUploadPost(false);
     };
-    setPosts([newPost, ...posts]);
-    setShowUploadPost(false);
-  };
+    fetchPostList();
+  }, [boardname]);
+
+  console.log("board data: ", posts);
 
   return (
     <Wrapper>
@@ -43,8 +67,8 @@ function BoardMain() {
               새 글을 작성해주세요! <img src={penIcon} alt="펜 아이콘"></img>
             </UploadNewPost>
           )}
-          {showUploadPost && <UploadPost onAddPost={handleAddPost} />}
-          {posts.map((post, index) => (
+          {showUploadPost && <UploadPost />}
+          {/* {posts.map((post, index) => (
             <Link
               key={post.id}
               style={{ textDecoration: "none", color: "black" }}
@@ -57,10 +81,10 @@ function BoardMain() {
                     ? `${post.content.slice(0, 50)}...`
                     : post.content}
                 </PostContent>
-                <PostInfo>{post.info}</PostInfo>
+                <PostInfo></PostInfo>
               </Post>
             </Link>
-          ))}
+          ))} */}
           <LeftBottom>
             <NextPageBtn>다음</NextPageBtn>
           </LeftBottom>

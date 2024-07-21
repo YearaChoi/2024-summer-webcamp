@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const getPost = async (id) => {
+const getBoardPost = async (boardname) => {
   try {
     const serverResponse = await axios.get(
-      `${process.env.REACT_APP_HOST_URL}/get/${id}`
+      `${process.env.REACT_APP_HOST_URL}/board/${boardname}`
     );
     console.log("serverRespon:", serverResponse);
     return serverResponse.data;
@@ -13,4 +13,4 @@ const getPost = async (id) => {
   }
 };
 
-export default getPost;
+export default getBoardPost;
