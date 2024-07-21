@@ -22,7 +22,11 @@ function BoardMain() {
   useEffect(() => {
     const fetchPostList = async () => {
       const fetchedPostList = await getBoard(boardname);
-      setPosts(fetchedPostList);
+
+      const sortedPosts = fetchedPostList.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      setPosts(sortedPosts);
       setShowUploadPost(false);
     };
     fetchPostList();
