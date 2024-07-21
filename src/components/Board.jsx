@@ -48,7 +48,12 @@ const Board = ({ boardTitle }) => {
       {posts &&
         posts.map((post, index) => (
           <Post key={post.id} onClick={() => handlePostClick(post.id)}>
-            <PostTitle key={index}>{post.title}</PostTitle>
+            <PostTitle key={index}>
+              {" "}
+              {post.title.length > 25
+                ? `${post.title.slice(0, 20)}...`
+                : post.title}
+            </PostTitle>
             <CreatedDate>{formatDate(post.createdAt)}</CreatedDate>
           </Post>
         ))}
