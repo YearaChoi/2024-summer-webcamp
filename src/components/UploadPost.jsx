@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import penIcon from "../assets/icons/pencil.png";
+import create from "../apis/createPost";
+import { useParams } from "react-router-dom";
 
 const rules = `에브리타임은 누구나 기분 좋게 참여할 수 있는 커뮤니티를 만들기 위해 커뮤니티 이용규칙을 제정하여 운영하고 있습니다. 위반 시 게시물이 삭제되고 서비스 이용이 일정 기간 제한될 수 있습니다. 
 
@@ -32,12 +34,30 @@ function UploadPost({ onAddPost }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const { boardTitle } = useParams();
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
 
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
+  //   if (!title.trim()) {
+  //     alert("제목을 입력해 주세요");
+  //     return;
+  //   }
+
+  //   if (!content.trim()) {
+  //     alert("내용을 입력해 주세요");
+  //     return;
+  //   }
+
+  //   onAddPost(title, content, isAnonymous);
+  //   setTitle("");
+  //   setContent("");
+  //   setIsAnonymous(true);
+  // };
+
+  const handleSubmit = async () => {
     if (!title.trim()) {
       alert("제목을 입력해 주세요");
       return;
@@ -48,10 +68,12 @@ function UploadPost({ onAddPost }) {
       return;
     }
 
-    onAddPost(title, content, isAnonymous);
-    setTitle("");
-    setContent("");
-    setIsAnonymous(true);
+    try {
+      const boardname = boardTitle;
+      await create(title, content, boardname);
+    } catch (error) {
+      console.error("Failed to create post:", error);
+    }
   };
 
   return (
