@@ -2,7 +2,7 @@ import axios from "axios";
 
 const updatePost = async (id, title, content, boardname) => {
   try {
-    const serverResponse = await axios.patch(
+    const serverResponse = await axios.put(
       `${process.env.REACT_APP_HOST_URL}`,
       {
         id,

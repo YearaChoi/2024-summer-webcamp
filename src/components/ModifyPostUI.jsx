@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import penIcon from "../assets/icons/pencil.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import updatePost from "../apis/updatePost";
 
 function ModifyPostUI({ initialTitle, initialContent, handleCancelEdit }) {
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
   const [isAnonymous, setIsAnonymous] = useState(true);
+  const { boardTitle, postId } = useParams();
   const navigate = useNavigate();
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!title.trim()) {
       alert("제목을 입력해 주세요");
       return;
@@ -28,7 +30,14 @@ function ModifyPostUI({ initialTitle, initialContent, handleCancelEdit }) {
     setContent("");
     setIsAnonymous(true);
 
-    navigate(-1);
+    try {
+      const id = postId;
+      const boardname = boardTitle;
+      await updatePost(id, title, content, boardname);
+      navigate(-1);
+    } catch (error) {
+      console.error("Failed to create post:", error);
+    }
   };
 
   return (
