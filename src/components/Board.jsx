@@ -12,6 +12,10 @@ const Board = ({ boardTitle }) => {
     navigate(`/board/${boardTitle}`);
   };
 
+  const handlePostClick = (postId) => {
+    navigate(`/board/${boardTitle}/post/${postId}`);
+  };
+
   useEffect(() => {
     const fetchPostList = async () => {
       const fetchedPostList = await getBoardPost(boardname);
@@ -39,8 +43,9 @@ const Board = ({ boardTitle }) => {
       <BoardTitle onClick={handleBoardTitleClick}>{boardTitle}</BoardTitle>
       {posts &&
         posts.map((post, index) => (
-          <Post onClick={handleBoardTitleClick} key={index}>
-            {post.title} {formatDate(post.createdAt)}
+          <Post key={post.id} onClick={() => handlePostClick(post.id)}>
+            <PostTitle key={index}>{post.title}</PostTitle>
+            <CreatedDate>{formatDate(post.createdAt)}</CreatedDate>
           </Post>
         ))}
     </BoardContainer>
@@ -70,9 +75,15 @@ const BoardTitle = styled.div`
 `;
 
 const Post = styled.div`
-  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 0.9px solid #c2c1c1;
   cursor: pointer;
+`;
+
+const PostTitle = styled.div`
+  font-size: 15px;
   height: 35px;
   display: flex;
   align-items: center;
@@ -81,4 +92,10 @@ const Post = styled.div`
   &:hover {
     background-color: #f9f9f9;
   }
+`;
+
+const CreatedDate = styled.div`
+  padding-right: 10px;
+  font-size: 12px;
+  color: #616161;
 `;
