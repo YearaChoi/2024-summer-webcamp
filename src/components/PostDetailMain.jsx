@@ -8,7 +8,7 @@ import thumbsBtn from "../assets/icons/thumbsUp.png";
 import scrapBtn from "../assets/icons/scrap.png";
 import defaultUI from "../assets/icons/DefaultUI.png";
 import ModifyPostUI from "./ModifyPostUI";
-import postData from "./postData";
+import getPost from "../apis/getPost";
 
 function PostDetailMain() {
   const { boardTitle, postId } = useParams();
@@ -34,9 +34,12 @@ function PostDetailMain() {
   };
 
   useEffect(() => {
-    // postId에 해당하는 게시글 데이터 찾기
-    const foundPost = postData.find((post) => post.id === parseInt(postId));
-    setPost(foundPost);
+    const fetchPost = async () => {
+      const id = postId;
+      const fetchedPost = await getPost(id);
+      setPost(fetchedPost);
+    };
+    fetchPost();
   }, [postId]);
 
   console.log("postId : ", postId);
@@ -67,7 +70,7 @@ function PostDetailMain() {
                     </UserDefaultImg>
                     <InfoContainer>
                       <UserName>익명</UserName>
-                      <UploadTime>07/14 22:02</UploadTime>
+                      <UploadTime>{post.createdAt}</UploadTime>
                     </InfoContainer>
                   </PostInfo>
                   <AboutPost>
