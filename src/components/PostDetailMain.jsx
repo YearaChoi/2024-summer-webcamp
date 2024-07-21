@@ -40,6 +40,10 @@ function PostDetailMain() {
     navigate(-1);
   };
 
+  const handleBoardTitleClick = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     const fetchPost = async () => {
       const id = postId;
@@ -60,7 +64,7 @@ function PostDetailMain() {
     <Wrapper>
       <Contents>
         <Left>
-          <BoardTitle>{boardTitle}</BoardTitle>
+          <BoardTitle onClick={handleBoardTitleClick}>{boardTitle}</BoardTitle>
           {isEditing ? (
             <ModifyPostUI
               initialTitle={post.title}
@@ -158,6 +162,7 @@ const BoardTitle = styled.div`
   display: flex;
   align-items: center;
   padding-left: 10px;
+  cursor: pointer;
 `;
 
 const Top = styled.div`
