@@ -1,22 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import getBoardPost from "../apis/getBoardPost";
 
-const Board = ({ boardTitle, posts }) => {
+const Board = ({ boardTitle }) => {
   const navigate = useNavigate();
 
   const handleBoardTitleClick = () => {
     navigate(`/board/${boardTitle}`);
   };
 
+  const [posts, setPosts] = useState("");
+
+  const boardname = boardTitle;
+
+  useEffect(() => {
+    const fetchPostList = async () => {
+      const fetchedPostList = await getBoardPost(boardname);
+      setPosts(fetchedPostList);
+    };
+    fetchPostList();
+  }, [boardname]);
+
+  console.log("board data: ", posts);
+  console.log("board name: ", boardname);
+
   return (
     <BoardContainer>
       <BoardTitle onClick={handleBoardTitleClick}>{boardTitle}</BoardTitle>
-      {posts.map((post, index) => (
-        <Post onClick={handleBoardTitleClick} key={index}>
-          {post}
-        </Post>
-      ))}
+      {posts &&
+        posts.map((post, index) => (
+          <Post onClick={handleBoardTitleClick} key={index}>
+            {post.title} {post.createdAt}
+          </Post>
+        ))}
     </BoardContainer>
   );
 };
