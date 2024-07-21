@@ -6,7 +6,6 @@ import penIcon from "../assets/icons/pencil.png";
 import fireIcon from "../assets/icons/hot.png";
 import UploadPost from "./UploadPost";
 import getBoard from "../apis/getBoardPost";
-// import postsData from "./postData";
 
 function BoardMain() {
   const { boardTitle } = useParams();
@@ -16,28 +15,7 @@ function BoardMain() {
     setShowUploadPost(true);
   };
 
-  // const [posts, setPosts] = useState(postsData);
   const [posts, setPosts] = useState("");
-
-  // const handleAddPost = (title, content, isAnonymous) => {
-  //   const newPost = {
-  //     id: posts.length + 1,
-  //     title,
-  //     content,
-  //     info: "방금 | " + (isAnonymous ? "익명" : "사용자"),
-  //   };
-  //   setPosts([newPost, ...posts]);
-  //   setShowUploadPost(false);
-  // };
-
-  // const handleAddPost = async () => {
-  //   try {
-  //     const boardname = boardTitle;
-  //     await getBoard(boardname);
-  //   } catch (error) {
-  //     console.error("Failed to get post:", error);
-  //   }
-  // };
 
   const boardname = boardTitle;
 
@@ -68,23 +46,24 @@ function BoardMain() {
             </UploadNewPost>
           )}
           {showUploadPost && <UploadPost />}
-          {/* {posts.map((post, index) => (
-            <Link
-              key={post.id}
-              style={{ textDecoration: "none", color: "black" }}
-              to={`/board/${boardTitle}/post/${post.id}`}
-            >
-              <Post key={index}>
-                <PostTitle>{post.title}</PostTitle>
-                <PostContent>
-                  {post.content.length > 50
-                    ? `${post.content.slice(0, 50)}...`
-                    : post.content}
-                </PostContent>
-                <PostInfo></PostInfo>
-              </Post>
-            </Link>
-          ))} */}
+          {posts &&
+            posts.map((post, index) => (
+              <Link
+                key={post.id}
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/board/${boardTitle}/post/${post.id}`}
+              >
+                <Post key={index}>
+                  <PostTitle>{post.title}</PostTitle>
+                  <PostContent>
+                    {post.content.length > 50
+                      ? `${post.content.slice(0, 50)}...`
+                      : post.content}
+                  </PostContent>
+                  <PostInfo>{post.createdAt}</PostInfo>
+                </Post>
+              </Link>
+            ))}
           <LeftBottom>
             <NextPageBtn>다음</NextPageBtn>
           </LeftBottom>
