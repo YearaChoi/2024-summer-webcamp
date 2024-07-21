@@ -40,23 +40,6 @@ function UploadPost() {
   const handleContentChange = (e) => setContent(e.target.value);
   const handleAnonymousChange = () => setIsAnonymous(!isAnonymous);
 
-  // const handleSubmit = () => {
-  //   if (!title.trim()) {
-  //     alert("제목을 입력해 주세요");
-  //     return;
-  //   }
-
-  //   if (!content.trim()) {
-  //     alert("내용을 입력해 주세요");
-  //     return;
-  //   }
-
-  //   onAddPost(title, content, isAnonymous);
-  //   setTitle("");
-  //   setContent("");
-  //   setIsAnonymous(true);
-  // };
-
   const handleSubmit = async () => {
     if (!title.trim()) {
       alert("제목을 입력해 주세요");
@@ -69,8 +52,10 @@ function UploadPost() {
     }
 
     try {
+      setIsAnonymous(true);
       const boardname = boardTitle;
       await create(title, content, boardname);
+      window.location.reload();
     } catch (error) {
       console.error("Failed to create post:", error);
     }
