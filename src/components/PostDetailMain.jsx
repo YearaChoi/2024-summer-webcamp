@@ -238,6 +238,7 @@ const Middle = styled.div`
 const PostTitle = styled.div`
   font-size: 20px;
   font-weight: 700;
+  margin-top: 5px;
   margin-bottom: 15px;
 `;
 

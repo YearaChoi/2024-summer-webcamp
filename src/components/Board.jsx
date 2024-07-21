@@ -91,7 +91,7 @@ const Post = styled.div`
 `;
 
 const PostTitle = styled.div`
-  font-size: 15px;
+  font-size: 13px;
   height: 35px;
   display: flex;
   align-items: center;

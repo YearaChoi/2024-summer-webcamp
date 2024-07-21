@@ -177,8 +177,9 @@ const Post = styled.div`
 
 const PostTitle = styled.div`
   padding-top: 20px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 7px;
   cursor: pointer;
 `;
 
