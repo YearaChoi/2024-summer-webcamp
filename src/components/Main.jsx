@@ -93,7 +93,8 @@ function Main() {
 export default Main;
 
 const Wrapper = styled.div`
-  height: 180vh;
+  /* height: 180vh; */
+  margin-bottom: 20px;
 `;
 
 const Contents = styled.div`

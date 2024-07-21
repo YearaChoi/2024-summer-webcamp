@@ -50,8 +50,8 @@ const Board = ({ boardTitle }) => {
           <Post key={post.id} onClick={() => handlePostClick(post.id)}>
             <PostTitle key={index}>
               {" "}
-              {post.title.length > 25
-                ? `${post.title.slice(0, 20)}...`
+              {post.title.length > 20
+                ? `${post.title.slice(0, 19)}...`
                 : post.title}
             </PostTitle>
             <CreatedDate>{formatDate(post.createdAt)}</CreatedDate>
