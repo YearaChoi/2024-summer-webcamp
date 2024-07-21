@@ -53,8 +53,19 @@ function PostDetailMain() {
     fetchPost();
   }, [postId]);
 
-  console.log("postId : ", postId);
-  console.log("post : ", post);
+  // console.log("postId : ", postId);
+  // console.log("post : ", post);
+
+  function formatDate(createdAt) {
+    const date = new Date(createdAt);
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${month}/${day} ${hours}:${minutes}`;
+  }
 
   if (!post) {
     return <div>게시글을 찾을 수 없습니다.</div>;
@@ -81,7 +92,7 @@ function PostDetailMain() {
                     </UserDefaultImg>
                     <InfoContainer>
                       <UserName>익명</UserName>
-                      <UploadTime>{post.createdAt}</UploadTime>
+                      <UploadTime>{formatDate(post.createdAt)}</UploadTime>
                     </InfoContainer>
                   </PostInfo>
                   <AboutPost>

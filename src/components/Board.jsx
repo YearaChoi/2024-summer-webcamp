@@ -5,14 +5,12 @@ import getBoardPost from "../apis/getBoardPost";
 
 const Board = ({ boardTitle }) => {
   const navigate = useNavigate();
+  const [posts, setPosts] = useState("");
+  const boardname = boardTitle;
 
   const handleBoardTitleClick = () => {
     navigate(`/board/${boardTitle}`);
   };
-
-  const [posts, setPosts] = useState("");
-
-  const boardname = boardTitle;
 
   useEffect(() => {
     const fetchPostList = async () => {
@@ -22,8 +20,19 @@ const Board = ({ boardTitle }) => {
     fetchPostList();
   }, [boardname]);
 
-  console.log("board data: ", posts);
-  console.log("board name: ", boardname);
+  // console.log("board data: ", posts);
+  // console.log("board name: ", boardname);
+
+  function formatDate(createdAt) {
+    const date = new Date(createdAt);
+
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${month}/${day} ${hours}:${minutes}`;
+  }
 
   return (
     <BoardContainer>
@@ -31,7 +40,7 @@ const Board = ({ boardTitle }) => {
       {posts &&
         posts.map((post, index) => (
           <Post onClick={handleBoardTitleClick} key={index}>
-            {post.title} {post.createdAt}
+            {post.title} {formatDate(post.createdAt)}
           </Post>
         ))}
     </BoardContainer>

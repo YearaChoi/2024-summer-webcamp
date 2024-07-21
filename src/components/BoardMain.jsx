@@ -32,7 +32,16 @@ function BoardMain() {
     fetchPostList();
   }, [boardname]);
 
-  console.log("board data: ", posts);
+  // console.log("board data: ", posts);
+
+  function formatDate(createdAt) {
+    const date = new Date(createdAt);
+
+    const hours = String(date.getHours()).padStart(2, "0");
+    const minutes = String(date.getMinutes()).padStart(2, "0");
+
+    return `${hours}:${minutes}`;
+  }
 
   return (
     <Wrapper>
@@ -64,7 +73,7 @@ function BoardMain() {
                       ? `${post.content.slice(0, 50)}...`
                       : post.content}
                   </PostContent>
-                  <PostInfo>{post.createdAt}</PostInfo>
+                  <PostInfo>{formatDate(post.createdAt)} | 익명</PostInfo>
                 </Post>
               </Link>
             ))}
