@@ -17,7 +17,7 @@ const Board = ({ boardTitle }) => {
   useEffect(() => {
     const fetchPostList = async () => {
       const fetchedPostList = await getBoardPost(boardname);
-      setPosts(fetchedPostList);
+      setPosts(fetchedPostList.slice(0, 4));
     };
     fetchPostList();
   }, [boardname]);
