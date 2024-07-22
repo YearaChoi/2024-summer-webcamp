@@ -246,6 +246,7 @@ const PostContent = styled.div`
   font-size: 15px;
   margin-bottom: 20px;
   margin-right: 20px;
+  white-space: pre-wrap;
 `;
 
 const Bottom = styled.div`
